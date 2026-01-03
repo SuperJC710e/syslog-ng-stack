@@ -1,4 +1,4 @@
-FROM balabit/syslog-ng:4.5.0
+FROM balabit/syslog-ng:4.10.2
 
 # Install logrotate for log rotation
 USER root

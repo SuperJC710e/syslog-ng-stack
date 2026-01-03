@@ -25,6 +25,11 @@ This project consists of two services:
 - **syslog-ng-server**: Production-grade syslog receiver with logrotate
 - **syslog-viewer**: Web-based viewer (same as Python stack)
 
+### Platform Support
+
+- **syslog-ng-server**: `linux/amd64`, `linux/arm64`
+- **syslog-viewer**: `linux/amd64`, `linux/arm64`
+
 ## Features
 
 ### Syslog-ng Server

@@ -2,6 +2,11 @@
 
 Enterprise-grade syslog receiver using syslog-ng with integrated log rotation.
 
+## Platform Support
+
+- **Architecture**: `linux/amd64`, `linux/arm64`
+- **Base Image**: `balabit/syslog-ng:4.10.2` (Debian-based, multi-arch)
+
 ## Features
 
 - **High Performance**: C-based syslog-ng handles 10,000+ messages/second
