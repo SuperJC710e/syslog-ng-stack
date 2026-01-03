@@ -2,7 +2,7 @@ FROM balabit/syslog-ng:4.5.0
 
 # Install logrotate for log rotation
 USER root
-RUN apk add --no-cache logrotate
+RUN apt-get update && apt-get install -y logrotate && rm -rf /var/lib/apt/lists/*
 
 # Copy configuration files
 COPY syslog-ng.conf /etc/syslog-ng/syslog-ng.conf
@@ -16,14 +16,14 @@ RUN chmod +x /usr/local/bin/rotate-logs.sh
 RUN mkdir -p /app/logs
 
 # Create syslog user/group if not exists
-RUN addgroup -g 1000 -S syslog 2>/dev/null || true
-RUN adduser -u 1000 -S syslog -G syslog 2>/dev/null || true
+RUN groupadd -g 1000 syslog 2>/dev/null || true
+RUN useradd -u 1000 -g syslog -M syslog 2>/dev/null || true
 
 # Set permissions
 RUN chown -R syslog:syslog /app/logs /etc/syslog-ng
 
 # Create supervisor config to run both syslog-ng and logrotate
-RUN apk add --no-cache supervisor
+RUN apt-get update && apt-get install -y supervisor && rm -rf /var/lib/apt/lists/*
 
 COPY supervisord.conf /etc/supervisord.conf
 
