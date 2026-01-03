@@ -34,5 +34,6 @@ EXPOSE 514/udp 514/tcp
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
   CMD pgrep -x syslog-ng || exit 1
 
-# Use supervisord to manage both processes
+# Override the base image's entrypoint and use supervisord to manage both processes
+ENTRYPOINT []
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
