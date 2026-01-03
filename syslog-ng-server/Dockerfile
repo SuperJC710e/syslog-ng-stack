@@ -32,7 +32,7 @@ EXPOSE 514/udp 514/tcp
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-  CMD pgrep -x syslog-ng || exit 1
+  CMD syslog-ng-ctl healthcheck --timeout 5
 
 # Override the base image's entrypoint and use supervisord to manage both processes
 ENTRYPOINT []

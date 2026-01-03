@@ -12,6 +12,10 @@ services:
       - "514:514/udp"    # Syslog UDP
       - "514:514/tcp"    # Syslog TCP
     restart: unless-stopped
+    cap_add:
+      - NET_BIND_SERVICE
+      - DAC_READ_SEARCH
+      - SYSLOG
     environment:
       - TZ=UTC
     volumes:
@@ -19,7 +23,7 @@ services:
     networks:
       - syslog-net
     healthcheck:
-      test: ["CMD", "pgrep", "-x", "syslog-ng"]
+      test: ["CMD", "syslog-ng-ctl", "healthcheck", "--timeout", "5"]
       interval: 30s
       timeout: 10s
       retries: 3
