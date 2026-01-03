@@ -334,7 +334,7 @@ docker exec syslog-ng-server logrotate -f /etc/logrotate.conf
 
 1. Check if syslog-ng is running:
    ```bash
-   docker exec syslog-ng-server pgrep syslog-ng
+   docker exec syslog-ng-server syslog-ng-ctl healthcheck --timeout 5
    ```
 
 2. Check configuration syntax:

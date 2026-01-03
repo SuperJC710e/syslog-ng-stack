@@ -115,6 +115,6 @@ options {
 
 ## Requirements
 
-- Docker or syslog-ng 4.5+
+- Docker or syslog-ng 4.10+
 - logrotate
 - supervisor (for multi-process management)
